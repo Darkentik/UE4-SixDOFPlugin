@@ -9,8 +9,13 @@ For questions & feedback , please visit this thread :
 
 ## What is it?
 
+- It's an Unreal Engine 4 plugin with : :
+       - Pawn + Movement Component
+       - 2 Movement Modes : Fly & Walk
 
 
+## Quick demonstration :
 
+- Overview :
 
-
+[![Youtube Video](http://img.youtube.com/vi/2OFEcdmg50g/0.jpg)](https://goo.gl/i8ye9u)
