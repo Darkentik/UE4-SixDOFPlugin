@@ -37,7 +37,7 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 		SpringArm->bInheritPitch = true;
 		SpringArm->bInheritYaw = true;
 		SpringArm->bInheritRoll = true;
-		SpringArm->AttachParent = CapsuleComponent;
+		SpringArm->SetupAttachment(CapsuleComponent);
 		SpringArm->SetRelativeLocation(FVector::UpVector * CapsuleHalfHeight);
 	}
 
@@ -45,7 +45,7 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 	if (Camera)
 	{
 		Camera->FieldOfView = 90.0f;
-		Camera->AttachTo(SpringArm, SpringArm->SocketName);
+		Camera->SetupAttachment(SpringArm, SpringArm->SocketName);
 	}
 
 	
@@ -60,7 +60,7 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 		PawnMesh->SetCollisionProfileName(TEXT("CharacterMesh"));
 		PawnMesh->bGenerateOverlapEvents = false;
 		PawnMesh->SetNotifyRigidBodyCollision(false);
-		PawnMesh->AttachParent = CapsuleComponent;
+		PawnMesh->SetupAttachment(CapsuleComponent);
 		PawnMesh->SetRelativeLocationAndRotation(-FVector::UpVector * CapsuleHalfHeight, FRotator(0.0f, -90.0f, 0.0f));
 	}
 
@@ -77,14 +77,14 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 
 	if (GizmoRootComponent)
 	{
-		GizmoRootComponent->AttachParent = CapsuleComponent;
+		GizmoRootComponent->SetupAttachment(CapsuleComponent);
 
 		ForwardArrowComponent = CreateDefaultSubobject<UArrowComponent>(TEXT("ForwardArrowComponent0"));
 		if (ForwardArrowComponent)
 		{
 			ForwardArrowComponent->ArrowColor = FColor::Red;
 			ForwardArrowComponent->bTreatAsASprite = true;
-			ForwardArrowComponent->AttachParent = GizmoRootComponent;
+			ForwardArrowComponent->SetupAttachment(GizmoRootComponent);
 			ForwardArrowComponent->bIsScreenSizeScaled = true;
 			ForwardArrowComponent->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 		}
@@ -94,7 +94,7 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 		{
 			RightArrowComponent->ArrowColor = FColor::Green;
 			RightArrowComponent->bTreatAsASprite = true;
-			RightArrowComponent->AttachParent = GizmoRootComponent;
+			RightArrowComponent->SetupAttachment(GizmoRootComponent);
 			RightArrowComponent->bIsScreenSizeScaled = true;
 			RightArrowComponent->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 
@@ -105,7 +105,7 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 		{
 			UpArrowComponent->ArrowColor = FColor::Blue;
 			UpArrowComponent->bTreatAsASprite = true;
-			UpArrowComponent->AttachParent = GizmoRootComponent;
+			UpArrowComponent->SetupAttachment(GizmoRootComponent);
 			UpArrowComponent->bIsScreenSizeScaled = true;
 			UpArrowComponent->SetRelativeRotation(FRotator(90.0f, 0.0f, 0.0f));
 
