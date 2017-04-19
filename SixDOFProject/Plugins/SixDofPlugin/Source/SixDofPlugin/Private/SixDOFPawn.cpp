@@ -1,4 +1,7 @@
-// Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+// Copyright 2015 Elhoussine Mehnik (Mhousse1247). All Rights Reserved.
+//******************* http://ue4resources.com/ *********************//
+
+
 
 #include "SixDofPluginPrivatePCH.h"
 
@@ -84,7 +87,7 @@ ASixDOFPawn::ASixDOFPawn(const FObjectInitializer& ObjectInitializer) :Super(Obj
 		{
 			ForwardArrowComponent->ArrowColor = FColor::Red;
 			ForwardArrowComponent->bTreatAsASprite = true;
-			ForwardArrowComponent->SetupAttachment(GizmoRootComponent);
+			ForwardArrowComponent->SetupAttachment( GizmoRootComponent);
 			ForwardArrowComponent->bIsScreenSizeScaled = true;
 			ForwardArrowComponent->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 		}

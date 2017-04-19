@@ -1,4 +1,5 @@
-// Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+// Copyright 2015 Elhoussine Mehnik (Mhousse1247). All Rights Reserved.
+//******************* http://ue4resources.com/ *********************//
 
 
 #include "SixDofPluginPrivatePCH.h"
@@ -139,13 +140,13 @@ void USixDOFMovementComponent::WalkPhysicsUpdate(float DeltaTime)
 
 	if (SurfaceDetectionTraceShape == ETraceShape::ETS_Line)
 	{
-		UKismetSystemLibrary::LineTraceSingle_NEW(this, TraceStart, TraceEnd,
+		UKismetSystemLibrary::LineTraceSingle(this, TraceStart, TraceEnd,
 			UEngineTypes::ConvertToTraceType(TraceChannel), true, ActorsToIgnore, DrawDebugType, HitResult, true);
 	}
 	else if (SurfaceDetectionTraceShape == ETraceShape::ETS_Sphere)
 	{
 		TraceEnd += CapsuleComponent->GetUpVector() * ShapeRadius;
-		UKismetSystemLibrary::SphereTraceSingle_NEW(this, TraceStart, TraceEnd, ShapeRadius,
+		UKismetSystemLibrary::SphereTraceSingle(this, TraceStart, TraceEnd, ShapeRadius,
 			UEngineTypes::ConvertToTraceType(TraceChannel), true, ActorsToIgnore, DrawDebugType, HitResult, true);
 	}
 	else
